@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Realizar una aplicación que permita:
+- Calcular si un número ingresado es primo.
+- Si el número ingresado es primo, generar e imprimir la misma cantidad de inputs hacia abajo.
+- Si el número ingresado no es primo, generar e imprimir la misma cantidad de textareas hacia abajo.
+
+Número primo: es aquel número que se puede dividir por uno y por el mismo número
+-->
+<html>
+    <head>
+        <title>Números primos y no primos</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <label>Ingrese un número:</label>
+        <input type="number" id="n" />
+        <button type="button" onclick="esPrimo()">Imprimir</button>
+        <section id="resultado"></section>
+        <br />
+
+        <script>
+            function esPrimo() {
+                let numeroPrimo = document.getElementById("n").value;
+                numeroPrimo = Number(numeroPrimo);
+                let esNumeroPrimo = true;
+                for (let i = 2; i < numeroPrimo; i++) {
+                    if (numeroPrimo % i === 0) {
+                        esNumeroPrimo = false;
+                    }
+                }
+
+                if (esNumeroPrimo) {
+                    imprimirInput(numeroPrimo);
+                } else {
+                    imprimirAreas(numeroPrimo);
+                }
+            }
+
+            function imprimirInput(num) {
+                const n = document.getElementById("resultado");
+                while (n.firstChild) {
+                    n.removeChild(n.firstChild);
+                }
+                for (let i = 0; i < num; i++) {
+                    var input = document.createElement("input");
+                    document.getElementById("resultado").appendChild(input);
+                }
+            }
+
+            function imprimirAreas(num) {
+                const n = document.getElementById("resultado");
+                while (n.firstChild) {
+                    n.removeChild(n.firstChild);
+                }
+                for (let i = 0; i < num; i++) {
+                    var input = document.createElement("textArea");
+                    document.getElementById("resultado").appendChild(input);
+                }
+            }
+        </script>
+    </body>
+</html>
